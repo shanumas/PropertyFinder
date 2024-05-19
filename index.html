@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/meyawo.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
@@ -29,10 +30,34 @@
         })(document, 'script');
     </script>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+            publicKey: "YGjBnnSnO8c2sdveQ",
+            });
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // these IDs from the previous steps
+                emailjs.sendForm('service_erfsoqn', 'template_4bptn9b', this)
+                    .then(() => {
+                        console.log('SUCCESS!');
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+            });
+        }
+    </script>
+
     <!-- Page Navbar -->
     <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
         <div class="container">
-            <a class="logo" href="#">PropertyFinder.AI</a>
+            <a class="logo" href="#">PropFinder.AI</a>
             <ul class="nav">
                 <li class="item">
                     <a class="link" href="#home">Home</a>
@@ -58,13 +83,23 @@
     <!-- page header -->
     <header id="home" class="header">
         <div class="overlay"></div>
-        <div class="header-content container">
+        <div class="header-content container agent-item d-none">
             <h1 class="header-title">
                 <span class="up">AI plugin for</span>
                 <span class="down">
                     real-estate Agents</span>
             </h1>
             <p class="header-subtitle">Chatbot, Smart Search, Analytics, Verification, and Auto Listing</p>
+
+            <button class="btn btn-primary" onclick="window.voiceflow.chat.open()">Try our chatbot</button>
+        </div>
+        <div class="header-content container buyer-header">
+            <h1 class="header-title">
+                <span class="up">Advanced Home Search</span>
+                <span class="down">
+                    powered by AI</span>
+            </h1>
+            <p class="header-subtitle">Personalized Suggestions, Chatbot, Smart Search, Off-market homes</p>
 
             <button class="btn btn-primary" onclick="window.voiceflow.chat.open()">Try our chatbot</button>
         </div>
@@ -77,16 +112,16 @@
             <!-- about wrapper -->
             <div class="about">
                 <div class="about-img-holder">
-                    <img src="assets/imgs/man.png" class="about-img"
+                    <img src="assets/imgs/man-1.png" class="about-img"
                         alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
                 </div>
                 <div class="about-caption">
                     <p class="section-subtitle">How does it work ?</p>
-                    <h2 class="section-title mb-3">10 lines of code</h2>
+                    <h2 class="section-title mb-3">LLM powered AI platform</h2>
                     <p>
-                        This plugin is easy to add to your website with just 10 lines of code. Our IT team can assist you, and the whole process takes less than an hour if you have fewer than 100 listings.
+                        We provide each buyer and renter with a personal AI agent that is dedicated to working in the user's best interest, ensuring their needs are prioritized over the seller's.
                     </p>
-                    <button class="btn-rounded btn btn-outline-primary mt-4 disabled">See sample code</button>
+                    <button class="btn-rounded btn btn-outline-primary mt-4 disabled" onclick="window.voiceflow.chat.open()">Talk to your personal Agent</button>
                 </div>
             </div><!-- end of about wrapper -->
         </div><!-- end of container -->
@@ -102,22 +137,11 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card">
                         <div class="body">
-                            <img src="assets/imgs/pencil-case.svg"
-                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
-                                class="icon">
-                            <h6 class="title">Smart search</h6>
-                            <p class="subtitle">LLM-powered search: accurate, context-aware, and natural language understanding.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="body">
                             <img src="assets/imgs/responsive.svg"
                                 alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
                                 class="icon">
-                            <h6 class="title">Automated listings</h6>
-                            <p class="subtitle">Generate listings directly from video content automatically.</p>
+                            <h6 class="title">Personalized Suggestions</h6>
+                            <p class="subtitle">Receive personalized property suggestions tailored to your unique preferences.</p>
                         </div>
                     </div>
                 </div>
@@ -127,8 +151,19 @@
                             <img src="assets/imgs/toolbox.svg"
                                 alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
                                 class="icon">
-                            <h6 class="title">Analytics</h6>
-                            <p class="subtitle">Gain insights into customer behavior and preferences.</p>
+                            <h6 class="title">Chatbot</h6>
+                            <p class="subtitle">Our AI chatbot provides instant, intelligent support for property inquiries.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="assets/imgs/pencil-case.svg"
+                                alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
+                                class="icon">
+                            <h6 class="title">Smart search</h6>
+                            <p class="subtitle">Experience smart search for quick, accurate, and relevant property results.</p>
                         </div>
                     </div>
                 </div>
@@ -138,8 +173,8 @@
                             <img src="assets/imgs/analytics.svg"
                                 alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page"
                                 class="icon">
-                            <h6 class="title">Customer Verificaiton</h6>
-                            <p class="subtitle">Automatically verify customers using advanced AI technology.</p>
+                            <h6 class="title">Off-market properties</h6>
+                            <p class="subtitle">Discover exclusive off-market properties not listed on public platforms.</p>
                         </div>
                     </div>
                 </div>
@@ -195,7 +230,7 @@
     </section> <!-- end of portfolio section -->
 
     <!-- pricing section -->
-    <section class="section" id="pricing">
+    <section class="section d-none" id="pricing">
         <div class="container text-center">
             <p class="section-subtitle">How Much does it cost ?</p>
             <h6 class="section-title mb-6">Our Pricing</h6>
@@ -283,16 +318,16 @@
             <p class="section-subtitle">How can you communicate?</p>
             <h6 class="section-title mb-5">Contact Me</h6>
             <!-- contact form -->
-            <form action="" class="contact-form col-md-10 col-lg-8 m-auto">
+            <form id="contact-form" class="contact-form col-md-10 col-lg-8 m-auto">
                 <div class="form-row">
                     <div class="form-group col-sm-6">
-                        <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+                        <input type="text" size="50" class="form-control" placeholder="Your Name" name="user_name" required>
                     </div>
                     <div class="form-group col-sm-6">
-                        <input type="email" class="form-control" placeholder="Enter Email" requried>
+                        <input type="email" class="form-control" placeholder="Enter Email" name="user_email" requried>
                     </div>
                     <div class="form-group col-sm-12">
-                        <textarea name="comment" id="comment" rows="6" class="form-control"
+                        <textarea rows="6" class="form-control" name="message" 
                             placeholder="Write Something"></textarea>
                     </div>
                     <div class="form-group col-sm-12 mt-3">
